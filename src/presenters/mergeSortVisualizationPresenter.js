@@ -1,36 +1,44 @@
-// MergeSortVisualizationPresenter.js
+import React, { useState } from "react";
+import MergeSortVisualizationView from "./../views/MergeSortVisualizationView";
+import mergeSort from "../algorithms/mergeSort";
 
-// Import the useState hook from the React library
-import { useState } from "react";
+// The MergeSortVisualizationPresenter component is a class
+// component that manages the state and logic for the
+// merge sort visualization. It receives the number of
+// elements to sort as a prop, and it generates a random
+// array of that length. It also provides a method for
+// sorting the array using the mergeSort algorithm, and
+// for updating the state of the MergeSortVisualizationView
+// component.
+class MergeSortVisualizationPresenter extends React.Component {
+  constructor(props) {
+    super(props);
 
-// Import the MergeSortVisualizationView component from the MergeSortVisualizationView.js file
-import MergeSortVisualizationView from "../views/MergeSortVisualizationView.js";
+    // Initialize the state with a random array of the
+    // specified length.
+    this.state = {
+      array: this.generateRandomArray(props.numElements),
+    };
+  }
 
-// Import the MergeSort model from the MergeSort.js file
-import MergeSort from "./../models/MergeSort.js";
+  // Generate a random array of the specified length.
+  generateRandomArray(length) {
+    return Array.from({ length }, () => Math.floor(Math.random() * 100));
+  }
 
-// Define the MergeSortVisualizationPresenter component
-const MergeSortVisualizationPresenter = () => {
-  // Use the useState hook to initialize and manage the state for the bars in the visualization
-  // Initialize the state with an array of bars
-  const [bars, setBars] = useState([
-    100, 200, 300, 400, 500, 600, 700, 800, 900, 1000,
-  ]);
+  // Sort the array using the mergeSort algorithm.
+  sort() {
+    this.setState({ array: mergeSort(this.state.array) });
+  }
 
-  // Define the startSort function, which is called when the "sort" button is clicked to start the sorting process
-  const startSort = () => {
-    // Use the mergeSort function from the MergeSort model to sort the array of bars
-    const sortedBars = new MergeSort().mergeSort(bars);
+  render() {
+    return (
+      <MergeSortVisualizationView
+        array={this.state.array}
+        onSort={() => this.sort()}
+      />
+    );
+  }
+}
 
-    // Update the state with the sorted array of bars
-    setBars(sortedBars);
-  };
-
-  return (
-    // Render the MergeSortVisualizationView component and pass the bars and startSort data as props
-    <MergeSortVisualizationView bars={bars} startSort={startSort} />
-  );
-};
-
-// Export the MergeSortVisualizationPresenter component
 export default MergeSortVisualizationPresenter;

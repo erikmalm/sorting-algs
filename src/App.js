@@ -1,15 +1,8 @@
-// App.js
-
 import React from "react";
-import "./styles/styles.css";
-import ContentPresenter from "./presenters/ContentPresenter";
+import ContentPresenter from "./presenters/contentPresenter";
 
 function App() {
-  return (
-    <div className="App">
-      <ContentPresenter />
-    </div>
-  );
+  return <ContentPresenter />;
 }
 
 export default App;
