@@ -1,7 +1,4 @@
-// The mergeSort function sorts an array using the merge
-// sort algorithm, and returns the intermediate states
-// of the sorting process.
-function mergeSort(array) {
+export default function mergeSort(array) {
   // Base case: if the array has 1 or 0 elements, it is
   // already sorted. Return the array as an intermediate
   // state.
@@ -21,28 +18,36 @@ function mergeSort(array) {
   const rightStates = mergeSort(right);
 
   // Merge the sorted left and right halves, and store
-  // the intermediate states in result.
-  const result = [];
+  // the intermediate states in resultStates.
+  const resultStates = [];
+  let result = [];
   while (left.length > 0 && right.length > 0) {
-    console.log("left: " + left + ", right: " + right + ", result: " + result);
+    // Add the current state of the result array to the
+    // intermediate states.
+    resultStates.push(result.slice());
+
     if (left[0] <= right[0]) {
       result.push(left.shift());
     } else {
       result.push(right.shift());
     }
-    console.log("left: " + left + ", right: " + right + ", result: " + result);
-    // Add the current state of the result array to the
-    // intermediate states.
-    result.push(result);
   }
+
   // Add the remaining elements of left and right to the result.
   result.push(...left, ...right);
+
+  
+
+  // Add the final state of the result array to the intermediate
+  // states.
+  resultStates.push(result.slice());
+
+  //console.log(resultStates);
 
   // Concatenate the leftStates, rightStates, and
   // result arrays to get the array of intermediate
   // states for the entire sorting process.
-
-  return [...leftStates, ...rightStates, ...result];
+  console.log(resultStates);
+  return [...leftStates, ...rightStates, ...resultStates];
 }
 
-export default mergeSort;
