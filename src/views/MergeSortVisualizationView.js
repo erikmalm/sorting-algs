@@ -1,5 +1,5 @@
 import React from "react";
-import Bar from "../components/Bar";
+import Bar from "../components/bar";
 
 // The MergeSortVisualizationView component is a pure
 // component that renders the bar chart and the sort
