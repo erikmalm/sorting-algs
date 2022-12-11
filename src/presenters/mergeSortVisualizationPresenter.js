@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MergeSortVisualizationView from "./../views/MergeSortVisualizationView";
+import MergeSortVisualizationView from "../views/mergeSortVisualizationView";
 import mergeSort from "../algorithms/mergeSort";
 
 // The MergeSortVisualizationPresenter component is a class
