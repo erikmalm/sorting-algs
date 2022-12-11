@@ -24,14 +24,16 @@ function mergeSort(array) {
   // the intermediate states in result.
   const result = [];
   while (left.length > 0 && right.length > 0) {
+    console.log("left: " + left + ", right: " + right + ", result: " + result);
     if (left[0] <= right[0]) {
       result.push(left.shift());
     } else {
       result.push(right.shift());
     }
+    console.log("left: " + left + ", right: " + right + ", result: " + result);
     // Add the current state of the result array to the
     // intermediate states.
-    result.push([...result, ...left, ...right]);
+    result.push(result);
   }
   // Add the remaining elements of left and right to the result.
   result.push(...left, ...right);
@@ -39,6 +41,7 @@ function mergeSort(array) {
   // Concatenate the leftStates, rightStates, and
   // result arrays to get the array of intermediate
   // states for the entire sorting process.
+
   return [...leftStates, ...rightStates, ...result];
 }
 
