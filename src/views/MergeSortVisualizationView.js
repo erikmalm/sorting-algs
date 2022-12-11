@@ -23,4 +23,4 @@ const MergeSortVisualizationView = ({ bars, startSort }) => {
 };
 
 // Export the MergeSortVisualizationView component
-export const MergeSortVisualizationView;
+export default MergeSortVisualizationView;
