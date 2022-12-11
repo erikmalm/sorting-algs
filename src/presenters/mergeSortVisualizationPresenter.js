@@ -47,5 +47,4 @@ const MergeSortVisualizationPresenter = () => {
   );
 };
 
-
 export default MergeSortVisualizationPresenter;

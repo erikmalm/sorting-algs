@@ -1,5 +1,6 @@
 // The mergeSort function sorts an array using the merge
-// sort algorithm.
+// sort algorithm, and returns the intermediate states
+// of the sorting process.
 function mergeSort(array) {
   // Base case: if the array has 1 or 0 elements, it is
   // already sorted. Return the array as an intermediate
@@ -28,8 +29,11 @@ function mergeSort(array) {
     } else {
       result.push(right.shift());
     }
-    result.push([...left, ...right]);
+    // Add the current state of the result array to the
+    // intermediate states.
+    result.push([...result, ...left, ...right]);
   }
+  // Add the remaining elements of left and right to the result.
   result.push(...left, ...right);
 
   // Concatenate the leftStates, rightStates, and
@@ -37,6 +41,5 @@ function mergeSort(array) {
   // states for the entire sorting process.
   return [...leftStates, ...rightStates, ...result];
 }
-
 
 export default mergeSort;
