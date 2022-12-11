@@ -27,6 +27,8 @@ function mergeSort(array) {
   }
   result.push(...sortedLeft, ...sortedRight);
 
+  console.log(result);
+
   return result;
 }
 
