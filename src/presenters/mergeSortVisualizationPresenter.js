@@ -37,20 +37,15 @@ const MergeSortVisualizationPresenter = () => {
   // the array, arrayLength, onSort, and onChange props.
   return (
     <div className="MergeSortVisualizationPresenter">
-      <input
-        type="number"
-        value={arrayLength}
-        onChange={handleChange}
-        min={1}
-        max={100}
-      />
       <MergeSortVisualizationView
         array={generateRandomArray(arrayLength)}
+        arrayLength={arrayLength}
         onSort={sort}
         onChange={handleChange}
       />
     </div>
   );
 };
+
 
 export default MergeSortVisualizationPresenter;

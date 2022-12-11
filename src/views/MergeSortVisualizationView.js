@@ -10,6 +10,13 @@ import Bar from "../components/bar";
 const MergeSortVisualizationView = (props) => {
   return (
     <div className="MergeSortVisualizationView">
+      <input
+        type="number"
+        value={props.arrayLength}
+        onChange={props.onChange}
+        min={1}
+        max={100}
+      />
       {props.array.map((value, index) => (
         <Bar key={index} value={value} />
       ))}
@@ -17,5 +24,6 @@ const MergeSortVisualizationView = (props) => {
     </div>
   );
 };
+
 
 export default MergeSortVisualizationView;
