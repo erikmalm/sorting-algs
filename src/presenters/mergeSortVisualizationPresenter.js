@@ -24,13 +24,22 @@ const MergeSortVisualizationPresenter = () => {
 
   // Sort the array using the mergeSort algorithm.
   function sort() {
-    setArray(mergeSort(array));
+    const copy = array.slice();
+    setArray(mergeSort(copy));
   }
 
   // Handle changes to the input field for the array
   // length by updating the state with the new value.
   function handleChange(event) {
-    setArrayLength(Number(event.target.value));
+    const length = Number(event.target.value);
+    setArrayLength(length);
+    setArray(generateRandomArray(length));
+  }
+
+  function handleRandomize(event) {
+    const length = arrayLength;
+    setArrayLength(length);
+    setArray(generateRandomArray(length));
   }
 
   // Return the MergeSortVisualizationView component with
@@ -38,10 +47,11 @@ const MergeSortVisualizationPresenter = () => {
   return (
     <div className="MergeSortVisualizationPresenter">
       <MergeSortVisualizationView
-        array={generateRandomArray(arrayLength)}
+        array={array}
         arrayLength={arrayLength}
         onSort={sort}
         onChange={handleChange}
+        onRandomize={handleRandomize}
       />
     </div>
   );

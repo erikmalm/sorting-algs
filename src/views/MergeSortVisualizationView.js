@@ -9,21 +9,25 @@ import Bar from "../components/bar";
 // button.
 const MergeSortVisualizationView = (props) => {
   return (
-    <div className="MergeSortVisualizationView">
-      <input
-        type="number"
-        value={props.arrayLength}
-        onChange={props.onChange}
-        min={1}
-        max={100}
-      />
-      {props.array.map((value, index) => (
-        <Bar key={index} value={value} />
-      ))}
-      <button onClick={props.onSort}>Sort</button>
+    <div>
+      <div className="MergeSortVisualizationView">
+        {props.array.map((value, index, length) => (
+          <Bar key={index} value={value} amount={length} />
+        ))}
+      </div>
+      <div className="input">
+        <button onClick={props.onRandomize}>Randomize</button>
+        <input
+          type="number"
+          value={props.arrayLength}
+          onChange={props.onChange}
+          min={1}
+          max={100}
+        />
+        <button onClick={props.onSort}>Sort</button>
+      </div>
     </div>
   );
 };
-
 
 export default MergeSortVisualizationView;
